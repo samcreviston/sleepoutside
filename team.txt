@@ -1,2 +1,6 @@
 Trello Board Link: https://trello.com/b/pdMWiRBq/wd330-team-board
-Name: Tristan Galloway
+
+Team 6 Members:
+    -> Tristan Galloway
+    -> Sam Creviston
+    -> Javier Sosa
