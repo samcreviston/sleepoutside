@@ -6,7 +6,8 @@ function renderCartContents() {
 
     // Check if the cart is empty
     if (!cartItems || cartItems.length === 0) {
-      document.querySelector(".product-list").innerHTML = "<p>Your cart is empty.</p>";
+      document.querySelector(".product-list").innerHTML =
+        "<p>Your cart is empty.</p>";
       return;
     }
 
@@ -14,8 +15,8 @@ function renderCartContents() {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
   } catch (error) {
-    console.error("Error rendering cart contents:", error);
-    document.querySelector(".product-list").innerHTML = "<p>There was an error loading your cart.</p>";
+    document.querySelector(".product-list").innerHTML =
+      "<p>There was an error loading your cart.</p>";
   }
 }
 
