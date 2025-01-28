@@ -103,6 +103,10 @@ button {
   text-align: center;
 }
 
+.cart-footer {
+  display: none; 
+}
+
 .cart svg {
   width: 25px;
 }
