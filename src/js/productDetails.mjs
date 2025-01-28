@@ -25,8 +25,6 @@ function renderProductDetails(item) {
 function renderDiscount(listPrice, finalPrice) {
   let listPriceElement = document.getElementById('productListPrice');
 
-  console.log(listPrice, finalPrice);
-
   // Reveal discount if there is one.
   if (listPrice >= finalPrice) {
     listPriceElement.style.display = "none";
