@@ -56,7 +56,6 @@ function renderCartTotal() {
 
   //populate cart total p with total value of cart items
   cartTotalP.innerHTML = "Total: $" + total;
-
 }
 
 renderCartContents();
