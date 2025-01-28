@@ -3,23 +3,45 @@ import { setLocalStorage } from "./utils.mjs";
 
 export default async function productDetails(productId) {
     const productData = await findProductById(productId);
-    console.log(productData)
     renderProductDetails(productData);
 
     // add listener to Add to Cart button
     document.getElementById("addToCart").addEventListener("click", addToCartHandler);
 }
 
-function renderProductDetails(productObject) {
-    console.log(productObject.Name)
-    document.querySelector("#productName").innerHTML = productObject.Name
-    document.querySelector("#productNameWithoutBrand").textContent = productObject.NameWithoutBrand
-    document.querySelector("#productImage").setAttribute("src", productObject.Image)
-    document.querySelector("#productImage").setAttribute("alt", productObject.Name)
-    document.querySelector("#productFinalPrice").textContent = productObject.FinalPrice
-    document.querySelector("#productColorName").textContent = productObject.Colors[0].ColorName
-    document.querySelector("#productDescriptionHtmlSimple").innerHTML = productObject.DescriptionHtmlSimple
-    document.querySelector("#addToCart").setAttribute("data-id", productObject.Id)
+function renderProductDetails(item) {
+    document.querySelector("#productName").innerHTML = item.Name;
+    document.querySelector("#productNameWithoutBrand").textContent = item.NameWithoutBrand;
+    document.querySelector("#productImage").setAttribute("src", item.Image);
+    document.querySelector("#productImage").setAttribute("alt", item.Name);
+    renderDiscount(item.ListPrice, item.FinalPrice)
+    document.querySelector("#productFinalPrice").textContent = `$${item.FinalPrice}`;
+    document.querySelector("#productColorName").textContent = item.Colors[0].ColorName;
+    document.querySelector("#productDescriptionHtmlSimple").innerHTML = item.DescriptionHtmlSimple;
+    document.querySelector("#addToCart").setAttribute("data-id", item.Id);
+}
+
+// Render and calculate the discount when applicable.
+function renderDiscount(listPrice, finalPrice) {
+  let listPriceElement = document.getElementById('productListPrice');
+
+  console.log(listPrice, finalPrice);
+
+  // Reveal discount if there is one.
+  if (listPrice >= finalPrice) {
+    listPriceElement.style.display = "none";
+  } else {
+    listPriceElement.style.display = "block";
+  
+    // Calculate discount percentage
+    const discountPercentage = Math.round(((listPrice - finalPrice) / listPrice) * 100);
+  
+    // Update the content with crossed-through list price and discount percentage
+    listPriceElement.innerHTML = `
+      <span id="listPrice">$${listPrice}</span>
+      <span id="discountPercentage">(${discountPercentage}% off)</span>
+    `;
+  }  
 }
 
 // Add product to the cart
