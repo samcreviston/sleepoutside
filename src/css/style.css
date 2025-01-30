@@ -104,7 +104,7 @@ button {
 }
 
 .cart-footer {
-  display: none; 
+  display: none;
 }
 
 .cart svg {
@@ -204,6 +204,21 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+/* Product Details Discount Section */
+#productListPrice {
+  display: none;
+}
+
+#listPrice {
+  text-decoration: line-through;
+  color: rgb(100, 100, 100);
+}
+
+#discountPercentage {
+  color: red;
+  margin-left: 8px;
 }
 
 @media screen and (min-width: 500px) {
