@@ -129,7 +129,7 @@ button {
 .product-list {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   list-style-type: none;
   padding: 0;
 }
@@ -137,6 +137,7 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
@@ -170,13 +171,13 @@ button {
   width: 100%;
 }
 
-/* Start cart list card styles */
 .cart-card {
   display: grid;
   grid-template-columns: 25% auto 15%;
   font-size: var(--small-font);
-  /* max-height: 120px; */
+  padding-top: 25px;
   align-items: center;
+  position: relative;
 }
 
 .cart-card__image {
@@ -204,6 +205,22 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+.cart-card__remove {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  padding: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.cart-card__remove:hover {
+  transform: scale(1.1);
 }
 
 /* Product Details Discount Section */
