@@ -29,3 +29,38 @@ export function getParam(param) {
 
   return paramData
 }
+
+export async function renderWithTemplate(templateFn, parentElement, data, callback, position="afterbegin", clear=true) {
+  if (clear) {
+      parentElement.innerHTML = "";
+  }
+  const htmlString = await templateFn(data);
+  parentElement.insertAdjacentHTML(position, htmlString);
+  if(callback) {
+      callback(data);
+  }
+}
+
+function loadTemplate(path) {
+  return async function () {
+      const res = await fetch(path);
+      if (res.ok) {
+      const html = await res.text();
+      return html;
+      }
+  };
+}
+
+export function loadHeaderFooter() {
+  // Get the header and footer contents
+  const loadHeader = loadTemplate("/partials/header.html");
+  const loadFooter = loadTemplate("/partials/footer.html");
+
+  // Get the header and footer elements from the dom.
+  const headerElement = document.getElementById('main-header');
+  const footerElement = document.getElementById('main-footer');
+
+  // Render the header and footer
+  renderWithTemplate(loadHeader, headerElement)
+  renderWithTemplate(loadFooter, footerElement)
+}

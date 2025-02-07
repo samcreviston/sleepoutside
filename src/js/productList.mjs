@@ -29,5 +29,3 @@ export default async function productList(category, selector) {
     const products = await getData(category);
     await renderList(products, selector);
 }
-
-

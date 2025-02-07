@@ -1,4 +1,5 @@
 import { getLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
   try {
@@ -60,3 +61,4 @@ function renderCartTotal() {
 
 renderCartContents();
 renderCartTotal();
+loadHeaderFooter();
