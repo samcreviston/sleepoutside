@@ -1,12 +1,22 @@
 import { findProductById } from "./productData.mjs";
-import { setLocalStorage } from "./utils.mjs";
+import { setLocalStorage, renderErrorPage } from "./utils.mjs";
 
 export default async function productDetails(productId) {
-    const productData = await findProductById(productId);
-    renderProductDetails(productData);
+  try {
+      const productData = await findProductById(productId);
 
-    // add listener to Add to Cart button
-    document.getElementById("addToCart").addEventListener("click", addToCartHandler);
+      // If the product doesn't exist, render the error page
+      if (!productData) {
+        renderErrorPage("Looks like we don't have that product...");
+      } else {
+        // Otherwise load the product page normally
+        renderProductDetails(productData);
+
+        document.getElementById("addToCart").addEventListener("click", addToCartHandler);
+      }
+  } catch (error) {
+      renderErrorPage(`An error occurred while loading the product: ${error}`);
+  }
 }
 
 function renderProductDetails(item) {

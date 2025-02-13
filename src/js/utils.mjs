@@ -64,3 +64,17 @@ export function loadHeaderFooter() {
   renderWithTemplate(loadHeader, headerElement)
   renderWithTemplate(loadFooter, footerElement)
 }
+
+// Function to render an error message on the page
+export function renderErrorPage(message) {
+  let mainElement = document.querySelector("main");
+
+  // Clear the main content and replace it with a message and link back to the home page
+  mainElement.innerHTML = `
+      <div class="error-message">
+          <h1>Oops!</h1>
+          <p>${message}</p>
+          <a href="/index.html">Return to Home</a>
+      </div>
+  `;
+}
