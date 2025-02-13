@@ -23,7 +23,7 @@ function renderProductDetails(item) {
   // Add content to the existing product_page index.html
     document.querySelector("#productName").innerHTML = item.Name;
     document.querySelector("#productNameWithoutBrand").textContent = item.NameWithoutBrand;
-    document.querySelector("#productImage").setAttribute("src", item.Image);
+    document.querySelector("#productImage").setAttribute("src", item.Images.PrimaryLarge);
     document.querySelector("#productImage").setAttribute("alt", item.Name);
     renderDiscount(item.ListPrice, item.FinalPrice)
     document.querySelector("#productFinalPrice").textContent = `$${item.FinalPrice}`;
