@@ -58,9 +58,7 @@ function getCartCount() {
 
 export function updateCartCount() {
   let currentCartCount = getCartCount();
-  console.log(currentCartCount);
   let countElement = document.getElementById("cart-count");
-  console.log(countElement);
   countElement.innerHTML = currentCartCount;
 }
 
