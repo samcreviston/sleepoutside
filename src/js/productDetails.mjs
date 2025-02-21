@@ -1,5 +1,5 @@
 import { findProductById } from "./productData.mjs";
-import { setLocalStorage, renderErrorPage } from "./utils.mjs";
+import { setLocalStorage, renderErrorPage, updateCartCount } from "./utils.mjs";
 
 export default async function productDetails(productId) {
   try {
@@ -62,6 +62,8 @@ function addProductToCart(product) {
   }
   cart.push(product);
   setLocalStorage("so-cart", cart);
+
+  updateCartCount();
 }
 
 // add to cart button event handler
