@@ -114,6 +114,16 @@ button {
   fill: gray;
 }
 
+#cart-count {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
 /* End cart icon styles */
 
 .mission {
@@ -271,7 +281,6 @@ button {
   text-align: center;
 }
 
-
 footer {
   font-size: var(--small-font);
   padding: 1em;
@@ -290,4 +299,3 @@ footer {
     grid-template-columns: 150px auto 15%;
   }
 }
-

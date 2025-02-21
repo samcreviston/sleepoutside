@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, updateCartCount } from "./utils.mjs";
 import { renderCartContents } from "./cartView.mjs";
 
 // Function to remove an item from localStorage and re-render the cart
@@ -13,6 +13,10 @@ export function removeCartItem(itemName) {
   // Update localStorage
   setLocalStorage("so-cart", cartItems);
 
+  //update cart count icon
+  updateCartCount();
+
   // Re-render the cart to reflect changes
   renderCartContents();
 }
+

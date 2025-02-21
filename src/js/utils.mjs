@@ -51,18 +51,41 @@ function loadTemplate(path) {
   };
 }
 
+function getCartCount() {
+  let cartCount = getLocalStorage("so-cart").length;
+  return String(cartCount);
+}
+
+export function updateCartCount() {
+  let currentCartCount = getCartCount();
+  let countElement = document.getElementById("cart-count");
+  countElement.innerHTML = currentCartCount;
+}
+
 export function loadHeaderFooter() {
-  // Get the header and footer contents
-  const loadHeader = loadTemplate("/partials/header.html");
-  const loadFooter = loadTemplate("/partials/footer.html");
+  return new Promise((resolve, reject) => {
+    try {
+      // Get the header and footer contents
+      const loadHeader = loadTemplate("/partials/header.html");
+      const loadFooter = loadTemplate("/partials/footer.html");
 
-  // Get the header and footer elements from the dom.
-  const headerElement = document.getElementById('main-header');
-  const footerElement = document.getElementById('main-footer');
+      // Get the header and footer elements from the dom
+      const headerElement = document.getElementById('main-header');
+      const footerElement = document.getElementById('main-footer');
 
-  // Render the header and footer
-  renderWithTemplate(loadHeader, headerElement)
-  renderWithTemplate(loadFooter, footerElement)
+      // Render the header and footer
+      Promise.all([
+        renderWithTemplate(loadHeader, headerElement),
+        renderWithTemplate(loadFooter, footerElement)
+      ]).then(() => {
+        // Now that the header is rendered, update the cart count
+        updateCartCount();
+        resolve();
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
 }
 
 // Function to render an error message on the page
