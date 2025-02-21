@@ -21,6 +21,7 @@ export default async function productDetails(productId) {
 
 function renderProductDetails(item) {
   // Add content to the existing product_page index.html
+    document.title = `Sleep Outside | ${item.Name}`
     document.querySelector("#productName").innerHTML = item.Name;
     document.querySelector("#productNameWithoutBrand").textContent = item.NameWithoutBrand;
     document.querySelector("#productImage").setAttribute("src", item.Images.PrimaryLarge);
