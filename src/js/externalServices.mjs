@@ -43,5 +43,11 @@ export async function checkout(payload) {
     },
     body: JSON.stringify(payload),
   };
-  return await fetch(baseURL + "checkout/", options).then(convertToJson);
+  const response = await fetch(baseURL + "checkout", options);
+  if (!response.ok) {
+    // You could log the response to inspect the error returned
+    const errorResponse = await response.text(); // or response.json() if JSON is returned
+    throw new Error(`Checkout failed: ${errorResponse}`);
+  }
+  return await convertToJson(response);
 }
