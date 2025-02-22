@@ -1,4 +1,4 @@
-import { getData } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 
 function productCardTemplate(product) {
     return `<li class="product-card">
@@ -26,6 +26,6 @@ function renderList(list, selector) {
 
 //dynamically display the products by category
 export default async function productList(category, selector) {
-    const products = await getData(category);
+    const products = await getProductsByCategory(category);
     await renderList(products, selector);
 }

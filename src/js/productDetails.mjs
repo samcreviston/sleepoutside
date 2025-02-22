@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import { setLocalStorage, renderErrorPage, updateCartCount } from "./utils.mjs";
 
 export default async function productDetails(productId) {
