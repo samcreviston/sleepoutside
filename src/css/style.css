@@ -80,9 +80,7 @@ header {
 .highlight {
   color: var(--tertiary-color);
 }
-
 button {
-  padding: 0.5em 2em;
   background-color: var(--secondary-color);
   color: white;
   margin: auto;
@@ -102,18 +100,15 @@ button {
   position: relative;
   text-align: center;
 }
-
 .cart-footer {
   display: none;
 }
-
 .cart svg {
   width: 25px;
 }
 .cart:hover svg {
   fill: gray;
 }
-
 #cart-count {
   position: absolute;
   top: 5px;
@@ -125,7 +120,6 @@ button {
 }
 
 /* End cart icon styles */
-
 .mission {
   padding: 0 0.5em;
   /* margin: 0.5em 0; */
@@ -234,14 +228,25 @@ button {
 .cart-card__remove:hover {
   transform: scale(1.1);
 }
-/* Ensure all cart cards are the same width */
 .cart-list {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers them for uniformity */
-  width: 100%; /* Ensure the parent container spans full width */
+  align-items: center;
+  width: 100%;
 }
-
+#checkout-button {
+  padding: 10px 20px;
+  background-color: #d88740;
+  border-radius: 30px;
+  margin-bottom: 10px;
+}
+#checkout-button:hover {
+  background-color: #d8741c;
+}
+#checkout-button a {
+  text-decoration: none;
+  color: white;
+}
 
 /* Product Details Discount Section */
 #productListPrice {
@@ -294,6 +299,32 @@ button {
 .product-list-grid figure img:hover {
   transform: scale(1.1);
 }
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0;
+  list-style: none; /* Removes default list styling */
+}
+.product-card {
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 250px; /* Adjust as needed */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px; /* Centers and adds spacing */
+  border-radius: 8px; /* Optional: Adds rounded corners */
+}
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
 
 /* Checkout Section */
 form {
@@ -307,9 +338,11 @@ form {
 label {
   font-weight: bold;
 }
-input, textarea  {
+input,
+textarea {
   width: 100%;
-  padding: 8px; font-size: 16px;
+  padding: 8px;
+  font-size: 16px;
 }
 .order-summary {
   display: flex;
@@ -326,18 +359,15 @@ input, textarea  {
   text-align: center;
   max-width: 400px;
 }
-
 #success-icon {
   font-size: 50px;
   color: green;
 }
-
 #success-message {
   font-size: 20px;
   margin: 15px 0;
   color: #333;
 }
-
 #continue-btn {
   display: inline-block;
   margin-top: 15px;
@@ -347,19 +377,14 @@ input, textarea  {
   text-decoration: none;
   border-radius: 5px;
 }
-
 #continue-btn:hover {
   background-color: darkgreen;
 }
-
-
 
 footer {
   font-size: var(--small-font);
   padding: 1em;
 }
-
-
 
 @media screen and (min-width: 500px) {
   body {
